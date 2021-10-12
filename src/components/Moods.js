@@ -98,8 +98,8 @@ const Moods = () => {
               <br></br>
               <br></br>
               <span className="card-icon">
-                    <img src="https://img.icons8.com/ios/100/000000/twitter--v1.png"/> 
-             </span>
+                    <span style={{fontSize:"90px"}} className="iconify" data-icon="ph:twitter-logo-thin"></span>      
+                </span>
                
           </button>
             
@@ -111,7 +111,7 @@ const Moods = () => {
               <br></br>
               <br></br>
               <span className="card-icon">
-                    <img src="https://img.icons8.com/ios/100/000000/air-element.png"/>  
+                        <span style={{fontSize:"90px"}} className="iconify" data-icon="ph:wind-thin"></span>
              </span>
                
           </button>
