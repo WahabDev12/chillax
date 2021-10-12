@@ -1,12 +1,12 @@
 import Navbar from "./Navbar";
 import "../App.css";
-import Rain from "./Rain"
+import Moods from "./Moods"
 
 const HomePage = () => {
     return ( 
         <div className="home-page">
            <Navbar />
-            <Rain />
+            <Moods />
         </div>
     );
 }
