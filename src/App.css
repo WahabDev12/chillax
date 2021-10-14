@@ -153,17 +153,21 @@ a {
 }
 
 .pom-button{
-    width:120px;
+    width:150px;
     padding:15px;
     font-size: 17px;
     border: none;
     outline:none;
     cursor: pointer;
     font-weight:500;
-    border-radius:3px;
+    border-radius:5px;
     background-color: #FFDD00;
 }
 
+.pom-button:hover{
+       box-shadow: 0 2px 5px 0 #FFDD00;
+  
+}
 
 .card-button{
     width:220px;
@@ -187,7 +191,7 @@ a {
 
 .moods-div{
    width:900px;
-   margin:5rem auto;
+   margin:2rem auto;
    display: grid;
    grid-template-rows: 1fr 1fr 1fr;
    grid-template-columns: 1fr 1fr 1fr;
@@ -219,6 +223,130 @@ body::-webkit-scrollbar-thumb {
     padding:30px;
     border: 3px solid #3F51B5;
 }
+
+
+/*MOOD TAGS*/
+.mood-tags{
+    width:400px;
+    margin-top:3rem;
+    margin-left:13rem;
+    padding-right:40px;
+       
+}
+
+.mood-tags > button{
+    margin-left:1.5rem;
+    padding:12px;
+    outline:none;
+    font-size:18px;
+    border:1px solid #3F51B5;
+    border-radius: 7px;
+    color:#3F51B5;
+    cursor: pointer;
+}
+
+.mood-tags > button:hover{
+      box-shadow: 0 8px 16px 0 rgba(95, 90, 90, 0.3);
+   
+}
+
+.random-btn{
+    margin-left:65rem;
+    padding:10px;
+    outline:none;
+    font-size:18px;
+    border:1px solid #3F51B5;
+    border-radius: 2000px;
+    color:#3F51B5;
+    cursor: pointer;
+}
+
+/* FOOTER*/
+
+footer{
+    text-align: center;
+    padding:20px;
+    background-color: #F8F8F8;
+    color:black;
+    font-size:19px;
+}
+
+b{
+    color:#3F51B5;
+    text-decoration: underline;
+}
+
+
+/* BORDER ANIMATION*/
+
+.card-button {
+    position: relative;
+}
+
+
+.card-button:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 10px;
+    background: linear-gradient(360deg, #00F260, #0575E6, #e24f80,);
+    background-size: 300% 300%;
+    clip-path: polygon(0% 100%, 3px 100%, 3px 3px, calc(100% - 3px) 3px, calc(100% - 3px) calc(100% - 3px), 3px calc(100% - 3px), 3px 100%, 100% 100%, 100% 0%, 0% 0%);
+}
+
+.card-button:after {
+    animation: frame-enter 1s forwards ease-in-out reverse, gradient-animation 2s ease-in-out infinite;
+} 
+
+/* motion */
+
+ @keyframes gradient-animation {
+    0% {
+        background-position: 15% 0%;
+    }
+
+    50% {
+        background-position: 85% 100%;
+    }
+  
+    100% {
+        background-position: 15% 0%;
+    }
+}
+
+@keyframes frame-enter {
+    0% {
+        clip-path: polygon(0% 100%, 3px 100%, 3px 3px, calc(100% - 3px) 3px, calc(100% - 3px) calc(100% - 3px), 3px calc(100% - 3px), 3px 100%, 100% 100%, 100% 0%, 0% 0%);
+    }
+
+    25% {
+        clip-path: polygon(0% 100%, 3px 100%, 3px 3px, calc(100% - 3px) 3px, calc(100% - 3px) calc(100% - 3px), calc(100% - 3px) calc(100% - 3px), calc(100% - 3px) 100%, 100% 100%, 100% 0%, 0% 0%);
+    }
+
+    50% {
+        clip-path: polygon(0% 100%, 3px 100%, 3px 3px, calc(100% - 3px) 3px, calc(100% - 3px) 3px, calc(100% - 3px) 3px, calc(100% - 3px) 3px, calc(100% - 3px) 3px, 100% 0%, 0% 0%);
+    }
+
+    75% {
+        -webkit-clip-path: polygon(0% 100%, 3px 100%, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 0%, 0% 0%);
+    }
+
+    100% {
+        -webkit-clip-path: polygon(0% 100%, 3px 100%, 3px 100%, 3px 100%, 3px 100%, 3px 100%, 3px 100%, 3px 100%, 3px 100%, 0% 100%);
+    }
+}
+ 
+
+
+
+/* NOT PLAYING*/
+
+
+
+
 
 
 

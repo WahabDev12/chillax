@@ -8,6 +8,7 @@ import Train from "./Train";
 import Ocean from "./Ocean";
 import Stadium from "./Stadium";
 import Leaves from "./Leaves";
+import Footer from "./Footer";
 
 
 
@@ -15,6 +16,13 @@ const Moods = () => {
 
     return (  
         <>
+        <div className="mood-tags">
+            <button>Productivity</button>
+            <button>Focus</button>
+            <button>Relax</button>
+            
+        </div>
+       
         <div className="moods-div">
             <Rain />
             <Bolt />
@@ -28,6 +36,8 @@ const Moods = () => {
            
       
         </div>
+        <br />
+            <Footer />
       </>
     );
 }

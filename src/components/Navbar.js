@@ -8,7 +8,7 @@ const Navbar = () => {
 		<h1 class="logo"><Link to="/" >Chillax😌 </Link></h1>
       <ul class="main-nav">
           <li> <button class="pom-button">
-              <span>Pomodoro</span>
+              <span>Pomodoro ⏰</span>
               </button>
               </li>
           <li><Link>About</Link></li>
