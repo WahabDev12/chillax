@@ -27,9 +27,8 @@ const Bolt = () => {
     return (
         <div className="mood-card">
           <button onClick={isPlaying ? handlePause : handlePlay} 
-                className={isPlaying ? "card-button" : "card-button-not"}
-          >
-                Lightning
+                className={isPlaying ? "card-button" : "card-button-not"} >
+                Thunder
               <br></br>
               <br></br>
               <span className="card-icon">

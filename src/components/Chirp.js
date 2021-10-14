@@ -29,8 +29,7 @@ const Chirp = () => {
         <>
              <div className="mood-card">
           <button onClick={isPlaying ? handlePause : handlePlay} 
-                className={isPlaying ? "card-button" : "card-button-not"}
-          >
+                className={isPlaying ? "card-button" : "card-button-not"} >
                 Birds Chirp
               <br></br>
               <br></br>

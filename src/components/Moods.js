@@ -2,7 +2,7 @@ import "../App.css";
 import Rain from "./Rain";
 import Bolt from "./Bolt";
 import Fan from "./Fan";
-import Chrip from "./Chirp";
+import Chirp from "./Chirp";
 import Library from "./Clock";
 import Train from "./Train";
 import Ocean from "./Ocean";
@@ -20,13 +20,13 @@ const Moods = () => {
             <button>Productivity</button>
             <button>Focus</button>
             <button>Relax</button>
-              
+
         </div>
        
         <div className="moods-div">
             <Rain />
             <Bolt />
-            <Chrip />
+            <Chirp />
             <Fan />
             <Library />
             <Train />
