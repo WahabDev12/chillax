@@ -5,10 +5,10 @@ const Leaves = () => {
 
     const [isPlaying,setIsPlaying] = useState(false)
 
-    const [sound, setSound] = useState( new Audio(leaveSound))
+    const [sound, setSound] = useState(new Audio(leaveSound))
 
     // Looping through Audio
-    sound.loop = true
+    sound.loop = true;
 
     const handlePlay = async () =>{
         await sound.play();
@@ -22,17 +22,19 @@ const Leaves = () => {
         setIsPlaying(false)
         console.log("Paused")
     }
+
+
     return ( 
           
         <div className="mood-card">
         <button onClick={isPlaying ? handlePause : handlePlay} 
-            className={isPlaying ? "card-button" : "card-button-not"}
-          >                 Leaves
+            className={isPlaying ? "card-button" : "card-button-not"} >   
+                Leaves
               <br></br>
               <br></br>
               <span className="card-icon">
                     <ion-icon style={{fontSize:"90px"}} name="leaf-outline"></ion-icon>       
-         </span>
+              </span>
                
           </button>
             

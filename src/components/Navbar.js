@@ -11,7 +11,7 @@ const Navbar = () => {
               <span>Pomodoro ⏰</span>
               </button>
               </li>
-          <li><Link>About</Link></li>
+          <li><Link to="/">About</Link></li>
      
       </ul>
 	</header> 

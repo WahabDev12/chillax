@@ -22,12 +22,12 @@ const Clock = () => {
         setIsPlaying(false)
         console.log("Paused")
     }
-    
+
     return (  
         <div className="mood-card">
         <button onClick={isPlaying ? handlePause : handlePlay} 
-            className={isPlaying ? "card-button" : "card-button-not"}
-          >                 Clock
+            className={isPlaying ? "card-button" : "card-button-not"} >    
+                  Clock
               <br></br>
               <br></br>
               <span className="card-icon">

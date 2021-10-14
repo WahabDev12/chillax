@@ -11,16 +11,16 @@ import Leaves from "./Leaves";
 import Footer from "./Footer";
 
 
-
 const Moods = () => {
 
     return (  
         <>
         <div className="mood-tags">
+
             <button>Productivity</button>
             <button>Focus</button>
             <button>Relax</button>
-            
+              
         </div>
        
         <div className="moods-div">

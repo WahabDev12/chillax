@@ -8,7 +8,7 @@ const Rain = () => {
     const [sound, setSound] = useState( new Audio(RainSound))
 
     // Looping through Audio
-    setSound.loop = true
+    sound.loop = true
 
     const handlePlay = async () =>{
         await sound.play();
