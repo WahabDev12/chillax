@@ -1,25 +1,33 @@
-import { Howl } from "howler";
 import fanSound from "../audio_files/fan.mp3";
+import { useState } from "react";
 
 const Fan = () => {
 
-    let fan = new Howl({
-        src: [fanSound],
-        autoplay: false,
-        loop: true,
-        volume: 0.5,
-        onend: () => {
-            console.log('Finished!');
-        }
-    });
+    const [isPlaying,setIsPlaying] = useState(false)
 
-    const handleFanSound = async () =>{
-          await fan.play();
+    const [sound, setSound] = useState( new Audio(fanSound))
+
+    // Looping through Audio
+    sound.loop = true
+
+    const handlePlay = async () =>{
+        await sound.play();
+        setIsPlaying(true)
+        console.log("Playing")
+    }
+
+
+    const handlePause = () => {
+        sound.pause();
+        setIsPlaying(false)
+        console.log("Paused")
     }
     return ( 
            
         <div className="mood-card">
-          <button onClick={handleFanSound}  className="card-button">
+          <button onClick={isPlaying ? handlePause : handlePlay} 
+                className={isPlaying ? "card-button" : "card-button-not"}
+          >
                 Fan
               <br></br>
               <br></br>

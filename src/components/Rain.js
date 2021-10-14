@@ -5,20 +5,20 @@ import { useState } from "react";
 const Rain = () => {
     const [isPlaying,setIsPlaying] = useState(false)
 
-    const [rain, setRain] = useState( new Audio(RainSound))
+    const [sound, setSound] = useState( new Audio(RainSound))
 
     // Looping through Audio
-    rain.loop = true
+    setSound.loop = true
 
     const handlePlay = async () =>{
-        await rain.play();
+        await sound.play();
         setIsPlaying(true)
         console.log("Playing")
     }
 
 
     const handlePause = () => {
-        rain.pause();
+        sound.pause();
         setIsPlaying(false)
         console.log("Paused")
     }
@@ -26,9 +26,9 @@ const Rain = () => {
         <>
           {
 
-               <div className="mood-card">
-          <button onClick={ isPlaying ? handlePause  : handlePlay}
-                className="card-button">
+            <div className="mood-card">
+               <button onClick={ isPlaying ? handlePause  : handlePlay}
+                className={isPlaying ? "card-button" : "card-button-not"}>
                 Rain
               <br></br>
               <br></br>

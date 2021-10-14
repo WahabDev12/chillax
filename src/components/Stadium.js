@@ -1,25 +1,32 @@
-import { Howl } from "howler";
 import stadiumSound from "../audio_files/stadium.mp3";
+import { useState } from "react";
 
 const Stadium = () => {
 
-      let stadium = new Howl({
-        src: [stadiumSound],
-        autoplay: false,
-        loop: true,
-        volume: 0.5,
-        onend: () => {
-            console.log('Finished!');
-        }
-    });
+    const [isPlaying,setIsPlaying] = useState(false)
+
+    const [sound, setSound] = useState( new Audio(stadiumSound))
+
+    // Looping through Audio
+    sound.loop = true
 
     const handlePlay = async () =>{
-          await stadium.play();
+        await sound.play();
+        setIsPlaying(true)
+        console.log("Playing")
+    }
+
+
+    const handlePause = () => {
+        sound.pause();
+        setIsPlaying(false)
+        console.log("Paused")
     }
     return (  
           <div className="mood-card">
-          <button onClick={handlePlay}  className="card-button">
-                Stadium
+           <button onClick={isPlaying ? handlePause : handlePlay} 
+                className={isPlaying ? "card-button" : "card-button-not"}
+          >                Stadium
               <br></br>
               <br></br>
               <span className="card-icon">

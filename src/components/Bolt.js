@@ -1,25 +1,34 @@
 import ThunderSound from "../audio_files/bolt.wav";
-import {Howl} from "howler";
+import {useState} from "react";
 
 const Bolt = () => {
     
-    let thunder = new Howl({
-        src: [ThunderSound],
-        autoplay: false,
-        loop: true,
-        volume: 0.5,
-        onend: () => {
-            console.log('Finished!');
-        }
-    });
+    const [isPlaying,setIsPlaying] = useState(false)
+
+    const [sound, setSound] = useState( new Audio(ThunderSound))
+
+    // Looping through Audio
+    sound.loop = true
 
     const handlePlay = async () =>{
-          await thunder.play();
+        await sound.play();
+        setIsPlaying(true)
+        console.log("Playing")
     }
+
+
+    const handlePause = () => {
+        sound.pause();
+        setIsPlaying(false)
+        console.log("Paused")
+    }
+
 
     return (
         <div className="mood-card">
-          <button onClick={handlePlay}  className="card-button">
+          <button onClick={isPlaying ? handlePause : handlePlay} 
+                className={isPlaying ? "card-button" : "card-button-not"}
+          >
                 Lightning
               <br></br>
               <br></br>

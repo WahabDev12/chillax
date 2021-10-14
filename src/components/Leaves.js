@@ -1,26 +1,33 @@
-import { Howl } from "howler";
 import leaveSound from "../audio_files/bush.mp3";
+import { useState } from "react";
 
 const Leaves = () => {
 
-    let leave = new Howl({
-        src: [leaveSound],
-        autoplay: false,
-        loop: true,
-        volume: 0.5,
-        onend: () => {
-            console.log('Finished!');
-        }
-    });
+    const [isPlaying,setIsPlaying] = useState(false)
+
+    const [sound, setSound] = useState( new Audio(leaveSound))
+
+    // Looping through Audio
+    sound.loop = true
 
     const handlePlay = async () =>{
-          await leave.play();
+        await sound.play();
+        setIsPlaying(true)
+        console.log("Playing")
+    }
+
+
+    const handlePause = () => {
+        sound.pause();
+        setIsPlaying(false)
+        console.log("Paused")
     }
     return ( 
           
         <div className="mood-card">
-          <button onClick={handlePlay}  className="card-button">
-                Leaves
+        <button onClick={isPlaying ? handlePause : handlePlay} 
+            className={isPlaying ? "card-button" : "card-button-not"}
+          >                 Leaves
               <br></br>
               <br></br>
               <span className="card-icon">

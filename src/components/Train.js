@@ -1,25 +1,33 @@
-import { Howl } from "howler";
-import trainSound from "../audio_files/train.mp3"
+import trainSound from "../audio_files/train.mp3";
+import { useState } from "react";
 
 const Train = () => {
-      let train = new Howl({
-        src: [trainSound],
-        autoplay: false,
-        loop: true,
-        volume: 0.5,
-        onend: () => {
-            console.log('Finished!');
-        }
-    });
+
+    const [isPlaying,setIsPlaying] = useState(false)
+
+    const [sound, setSound] = useState( new Audio(trainSound))
+
+    // Looping through Audio
+    sound.loop = true
 
     const handlePlay = async () =>{
-          await train.play();
+        await sound.play();
+        setIsPlaying(true)
+        console.log("Playing")
+    }
+
+
+    const handlePause = () => {
+        sound.pause();
+        setIsPlaying(false)
+        console.log("Paused")
     }
     return (  
           
         <div className="mood-card">
-          <button onClick={handlePlay}  className="card-button">
-                Train
+          <button onClick={isPlaying ? handlePause : handlePlay} 
+                className={isPlaying ? "card-button" : "card-button-not"}
+          >                Train
               <br></br>
               <br></br>
               <span className="card-icon">

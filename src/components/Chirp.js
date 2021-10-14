@@ -1,26 +1,36 @@
-import { Howl } from "howler";
 import BirdSound from "../audio_files/birds.mp3";
+import { useState } from "react";
 
 
-const Chrip = () => {
+const Chirp = () => {
 
-    let birdsChirp = new Howl({
-        src: [BirdSound],
-        autoplay: false,
-        loop: true,
-        volume: 0.5,
-        onend: () => {
-            console.log('Finished!');
-        }
-    });
 
-    const handleBirdChirp = async () =>{
-          await birdsChirp.play();
+    const [isPlaying,setIsPlaying] = useState(false)
+
+    const [sound, setSound] = useState( new Audio(BirdSound))
+
+    // Looping through Audio
+    sound.loop = true
+
+    const handlePlay = async () =>{
+        await sound.play();
+        setIsPlaying(true)
+        console.log("Playing")
+    }
+
+
+    const handlePause = () => {
+        sound.pause();
+        setIsPlaying(false)
+        console.log("Paused")
     }
 
     return (
+        <>
              <div className="mood-card">
-          <button onClick={handleBirdChirp}  className="card-button">
+          <button onClick={isPlaying ? handlePause : handlePlay} 
+                className={isPlaying ? "card-button" : "card-button-not"}
+          >
                 Birds Chirp
               <br></br>
               <br></br>
@@ -31,8 +41,10 @@ const Chrip = () => {
           </button>
             
             </div>
+            </>
 
       );
 }
+
  
-export default Chrip;
+export default Chirp;

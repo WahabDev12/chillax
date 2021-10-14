@@ -1,25 +1,33 @@
-import { Howl } from "howler";
-import clockSound from "../audio_files/clock.mp3"
+import clockSound from "../audio_files/clock.mp3";
+import { useState } from "react";
 
 const Clock = () => {
     
-    let fan = new Howl({
-        src: [clockSound],
-        autoplay: false,
-        loop: true,
-        volume: 0.5,
-        onend: () => {
-            console.log('Finished!');
-        }
-    });
+    const [isPlaying,setIsPlaying] = useState(false)
+
+    const [sound, setSound] = useState( new Audio(clockSound))
+
+    // Looping through Audio
+    sound.loop = true
 
     const handlePlay = async () =>{
-          await fan.play();
+        await sound.play();
+        setIsPlaying(true)
+        console.log("Playing")
     }
+
+
+    const handlePause = () => {
+        sound.pause();
+        setIsPlaying(false)
+        console.log("Paused")
+    }
+    
     return (  
         <div className="mood-card">
-          <button onClick={handlePlay} className="card-button">
-                Clock
+        <button onClick={isPlaying ? handlePause : handlePlay} 
+            className={isPlaying ? "card-button" : "card-button-not"}
+          >                 Clock
               <br></br>
               <br></br>
               <span className="card-icon">

@@ -292,7 +292,7 @@ b{
     right: 0;
     bottom: 0;
     border-radius: 10px;
-    background: linear-gradient(360deg, #00F260, #0575E6, #e24f80,);
+    background: linear-gradient(360deg, #00F260, #0575E6, #e24f80);
     background-size: 300% 300%;
     clip-path: polygon(0% 100%, 3px 100%, 3px 3px, calc(100% - 3px) 3px, calc(100% - 3px) calc(100% - 3px), 3px calc(100% - 3px), 3px 100%, 100% 100%, 100% 0%, 0% 0%);
 }
@@ -345,7 +345,24 @@ b{
 /* NOT PLAYING*/
 
 
+.card-button-not{
+    width: 220px;
+    padding: 15px;
+    font-size: 17px;
+    height: 14rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-weight: 500;
+    border-radius: 18px;
+    background-color: #F5F5F5;
+    color: #636262;
+}
 
+.card-button-not:hover {
+    box-shadow: 0 8px 16px 0 rgba(95, 90, 90, 0.3);
+
+}
 
 
 
