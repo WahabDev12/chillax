@@ -1,5 +1,5 @@
 import "../App.css";
-import RainSound from "../audio_files/rain.mp3";
+import RainSound from "../audio_files/rain.wav";
 import { useState } from "react";
 
 const Rain = () => {
@@ -9,6 +9,7 @@ const Rain = () => {
 
     // Looping through Audio
     sound.loop = true
+    sound.volume = 0.5
 
     const handlePlay = async () =>{
         await sound.play();
