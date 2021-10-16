@@ -545,6 +545,13 @@ b{
     background-color: #5f70cf;
 }
 
+.active-timer{
+    font-size:19px;
+    letter-spacing: 2px;
+    font-weight: bold;
+
+}
+
 
 
 /* modal ends*/

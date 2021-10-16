@@ -1,5 +1,5 @@
 import "../App.css";
-import {useState} from "react";
+import {useState,useEffect} from "react";
 import { Link } from "react-router-dom";
 
 const Pomodoro = () => {
@@ -7,7 +7,7 @@ const Pomodoro = () => {
     const [displayTime,setDisplayTime] = useState(25*60);
     const [breakTime,setBreakTime] = useState(5*60);
     const [sessionTime,setSessionTime] = useState(23*60)
-    const [timerOn,setTimerOn] = useState(false)
+    const [timerOn,setTimerOn] = useState(false);
     
     //Format time function
     const formatTime = (time) =>{
@@ -22,7 +22,11 @@ const Pomodoro = () => {
     // ADDING TIME INTERVALS
 
     const changeSessionTimeUp = (interval) => {
+        setTimerOn(true)
         setSessionTime((prev) => prev + interval)
+        if(timerOn){
+            setDisplayTime(sessionTime + interval)
+        }
          
     }
     const changeBreakTimeUp = (interval) => {
@@ -30,14 +34,23 @@ const Pomodoro = () => {
          
     }
 
+    // START TIMER
+
+    const startTimer = () =>{
+        setTimerOn(true)
+    }
 
     // SUBSTRACTING TIME INTERVALS
 
     const changeSessionTimeDown = (interval) => {
+          setTimerOn(true)
           if(sessionTime <= 60 && interval < 0){
                 return
             }
-            setSessionTime((prev) => prev + interval)
+            setSessionTime((prev) => prev + interval);
+           if(timerOn){
+            setDisplayTime(sessionTime + interval)
+        }
          
     }
     const changeBreakTimeDown = (interval) => {
@@ -56,7 +69,18 @@ const Pomodoro = () => {
 		<h1 class="logo"><Link to="/" >Chillax😌 </Link></h1>
       <ul class="main-nav">
           <li> <a href="#openModal-about" className="pom-button">
-              <span>Pomodoro ⏰</span>
+              <span> 
+                {
+                  !timerOn &&
+                  "Pomodoro ⏰"
+                }
+                  </span>
+              <span className="active-timer">
+                {
+                  timerOn &&
+                   formatTime(displayTime)
+                }
+                  </span>
               </a>
               </li>
           <li><Link to="/">About</Link></li>
@@ -106,7 +130,9 @@ const Pomodoro = () => {
              </button>
          </div>
          <div className="save-div">
-             <button className="save-btn">Start Timer</button>
+             <button onClick={startTimer} className="save-btn">
+                 <a style={{color:"white"}} href="#close">Start Timer</a>
+             </button>
          </div>
        </div>
    </div>
