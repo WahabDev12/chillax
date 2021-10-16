@@ -1,11 +1,12 @@
-import Navbar from "./Navbar";
+import Navbar from "./Pomodoro";
 import "../App.css";
 import Moods from "./Moods"
+import Pomodoro from "./Pomodoro";
 
 const HomePage = () => {
     return ( 
         <div className="home-page">
-           <Navbar />
+           <Pomodoro />
             <Moods />
         </div>
     );

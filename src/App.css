@@ -475,6 +475,8 @@ b{
 .session-time{
     text-align: center;
     font-size: 22px;
+    letter-spacing: 1px;
+
     /* padding:5px; */
 
 }
@@ -514,6 +516,8 @@ b{
 .break-time{
     text-align: center;
     font-size: 22px;
+    letter-spacing: 1px;
+    font-family: "Epilogue",sans-serif;
     /* padding:5px; */
 
 }
