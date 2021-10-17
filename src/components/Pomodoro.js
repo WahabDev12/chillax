@@ -44,7 +44,7 @@ const Pomodoro = () => {
     }
 
     //PLAY BREAK SOUND
-    const playBreakSound = ()=>{
+    const playBreakSound = () =>{
         breakAudio.currentTime = 0;
         breakAudio.play();
     }
