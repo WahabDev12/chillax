@@ -1,13 +1,16 @@
 import "../App.css";
 import {useState,useEffect} from "react";
 import { Link } from "react-router-dom";
+import alarmSound from "../audio_files/iphone_timer_sound.mp3";
 
 const Pomodoro = () => {
 
     const [displayTime,setDisplayTime] = useState(25*60);
     const [breakTime,setBreakTime] = useState(5*60);
-    const [sessionTime,setSessionTime] = useState(23*60)
+    const [sessionTime,setSessionTime] = useState(25*60)
     const [timerOn,setTimerOn] = useState(false);
+    const [onBreak,setOnBreak] = useState(true);
+    const [breakAudio,setBreakAudio] = useState(new Audio(alarmSound));
     
     //Format time function
     const formatTime = (time) =>{
@@ -23,7 +26,7 @@ const Pomodoro = () => {
 
     const changeSessionTimeUp = (interval) => {
         setTimerOn(true)
-        setSessionTime((prev) => prev + interval)
+        setSessionTime((prev) => prev + interval);
         if(timerOn){
             setDisplayTime(sessionTime + interval)
         }
@@ -37,6 +40,63 @@ const Pomodoro = () => {
     // START TIMER
 
     const startTimer = () =>{
+        setTimerOn(true)
+    }
+
+    //PLAY BREAK SOUND
+    const playBreakSound = ()=>{
+        breakAudio.currentTime = 0;
+        breakAudio.play();
+    }
+
+
+    // CONTROL TIMER
+    const controlTimer = ()=>{
+        let seconds = 1000;
+        let date = new Date().getTime();
+        let nextDate = new Date().getTime() + seconds;
+        let brekage = onBreak; 
+        if(timerOn){
+            let interval = setInterval(()=>{
+                  date = new Date().getTime();
+                  if(date > nextDate){
+                      setDisplayTime((prev)=>{
+                          if(prev <= 0 && brekage){
+                              playBreakSound();
+                              brekage = true;
+                              setOnBreak(true);
+                              return breakTime;
+                          }
+                          else if(prev <= 0 && !brekage){
+                              playBreakSound();
+                              brekage = false;
+                              setBreakTime(false);
+                              return sessionTime;
+                          }
+                          return prev-1
+                      })
+                      nextDate += seconds;
+                  }
+            },30)
+            localStorage.clear();
+            localStorage.setItem("interval-id",interval)
+        }
+        if(!timerOn){
+        clearInterval(localStorage.getItem("interval-id"))
+      }
+        setTimerOn(timerOn)
+        setTimerOn(true)
+
+    }
+
+  
+
+
+    // RESET TIMER
+    const resetTimer = ()=>{
+        setDisplayTime(25*60);
+        setSessionTime(25*60);
+        setBreakTime(5*60)
         setTimerOn(true)
     }
 
@@ -78,12 +138,13 @@ const Pomodoro = () => {
               <span className="active-timer">
                 {
                   timerOn &&
-                   formatTime(displayTime)
+                   formatTime(displayTime) 
+                   
                 }
                   </span>
               </a>
               </li>
-          <li><Link to="/">About</Link></li>
+          <li><Link onClick={resetTimer} to="">About</Link></li>
      
       </ul>
 	</header> 
@@ -130,8 +191,8 @@ const Pomodoro = () => {
              </button>
          </div>
          <div className="save-div">
-             <button onClick={startTimer} className="save-btn">
-                 <a style={{color:"white"}} href="#close">Start Timer</a>
+             <button href="#close" onClick={controlTimer} className="save-btn">
+                 <a onClick={controlTimer} style={{color:"white"}} href="#close">Start Timer</a>
              </button>
          </div>
        </div>
