@@ -111,7 +111,7 @@ const Pomodoro = () => {
            if(timerOn){
             setDisplayTime(sessionTime + interval)
         }
-         
+         8
     }
     const changeBreakTimeDown = (interval) => {
         if(breakTime <= 60 && interval < 0){
