@@ -14,19 +14,25 @@ const Pomodoro = () => {
     
     //Format time function
     const formatTime = (time) =>{
+
         let minutes = Math.floor(time / 60);
         let seconds = time % 60;
+
         return(
+
             (minutes < 10 ? "0" + minutes : minutes)
-             + ":" + (seconds < 10 ? "0" + seconds:seconds)
+             + ":" + (seconds < 10 ? "0" + seconds : seconds)
         )
     }
 
     // ADDING TIME INTERVALS
 
     const changeSessionTimeUp = (interval) => {
-        setTimerOn(true)
+
+        setTimerOn(true);
+
         setSessionTime((prev) => prev + interval);
+        
         if(timerOn){
             setDisplayTime(sessionTime + interval)
         }
@@ -52,15 +58,22 @@ const Pomodoro = () => {
 
     // CONTROL TIMER
     const controlTimer = ()=>{
+
         let seconds = 1000;
         let date = new Date().getTime();
         let nextDate = new Date().getTime() + seconds;
-        let brekage = onBreak; 
+        let brekage = onBreak;
+
         if(timerOn){
+
             let interval = setInterval(()=>{
+
                   date = new Date().getTime();
+
                   if(date > nextDate){
+
                       setDisplayTime((prev)=>{
+
                           if(prev <= 0 && brekage){
                               playBreakSound();
                               brekage = true;
@@ -68,6 +81,7 @@ const Pomodoro = () => {
                               return breakTime;
                           }
                           else if(prev <= 0 && !brekage){
+
                               playBreakSound();
                               brekage = false;
                               setBreakTime(false);
@@ -111,7 +125,7 @@ const Pomodoro = () => {
            if(timerOn){
             setDisplayTime(sessionTime + interval)
         }
-         8
+         
     }
     const changeBreakTimeDown = (interval) => {
         if(breakTime <= 60 && interval < 0){
